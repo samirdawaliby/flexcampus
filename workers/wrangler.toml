@@ -1,0 +1,31 @@
+name = "flexcampus-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Base de données D1
+[[d1_databases]]
+binding = "DB"
+database_name = "flexcampus-db"
+database_id = "b204bc24-32d4-48f3-80a6-5390cd98592e"
+
+# Stockage R2 (à activer dans le dashboard Cloudflare)
+# [[r2_buckets]]
+# binding = "R2"
+# bucket_name = "flexcampus-storage"
+
+# Sessions KV
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "0123b457aa794372bd6826e7f11edd67"
+preview_id = "8d0913c0af584d5188a2926cd15464f8"
+
+# Variables d'environnement
+[vars]
+ENVIRONMENT = "production"
+ALLOWED_ORIGINS = "https://flexcampus.pages.dev,http://localhost:3000"
+LAB_TIMEOUT_MINUTES = "120"
+MAX_LABS_PER_STUDENT = "2"
+
+# Secrets (à configurer via: wrangler secret put ADMIN_API_KEY)
+# ADMIN_API_KEY = "..."

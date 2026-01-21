@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexCampus - Plateforme d'Apprentissage IT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <span class="logo-text">FlexCampus</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-view="home">
+                    <span class="nav-icon">🏠</span>
+                    <span>Accueil</span>
+                </a>
+                <div class="nav-section">
+                    <span class="nav-section-title">Thématiques</span>
+                    <div id="themes-nav">
+                        <!-- Chargé dynamiquement -->
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="student-code">
+                    <label for="studentCode">Code élève</label>
+                    <input type="text" id="studentCode" placeholder="ABC123" maxlength="10">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home View -->
+            <div id="view-home" class="view active">
+                <header class="content-header">
+                    <h1>Bienvenue sur FlexCampus</h1>
+                    <p>Votre plateforme d'apprentissage IT avec labs virtuels</p>
+                </header>
+
+                <section class="themes-grid" id="themes-grid">
+                    <!-- Chargé dynamiquement -->
+                </section>
+            </div>
+
+            <!-- Theme View -->
+            <div id="view-theme" class="view">
+                <header class="content-header">
+                    <button class="btn-back" onclick="showView('home')">← Retour</button>
+                    <h1 id="theme-title">Thématique</h1>
+                    <p id="theme-description">Description</p>
+                </header>
+
+                <section class="exercises-list" id="exercises-list">
+                    <!-- Chargé dynamiquement -->
+                </section>
+            </div>
+
+            <!-- Exercise View -->
+            <div id="view-exercise" class="view">
+                <header class="content-header">
+                    <button class="btn-back" id="btn-back-to-theme">← Retour</button>
+                    <h1 id="exercise-title">Exercice</h1>
+                    <div class="exercise-meta">
+                        <span id="exercise-difficulty" class="badge">Débutant</span>
+                        <span id="exercise-duration">⏱ 45 min</span>
+                    </div>
+                </header>
+
+                <div class="exercise-content">
+                    <div class="exercise-tabs">
+                        <button class="tab active" data-tab="course">📖 Cours</button>
+                        <button class="tab" data-tab="lab">🖥️ Lab</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab-course">
+                        <div id="course-content" class="markdown-content">
+                            <!-- Contenu Markdown rendu -->
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-lab">
+                        <div class="lab-container">
+                            <div class="lab-controls">
+                                <button id="btn-start-lab" class="btn btn-primary">
+                                    🚀 Démarrer le Lab
+                                </button>
+                                <button id="btn-stop-lab" class="btn btn-danger" style="display: none;">
+                                    ⏹ Arrêter le Lab
+                                </button>
+                                <span id="lab-status" class="lab-status"></span>
+                            </div>
+                            <div id="vnc-container" class="vnc-container" style="display: none;">
+                                <p class="vnc-placeholder">Le lab VNC s'affichera ici une fois démarré.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div id="loading" class="loading-overlay">
+                <div class="spinner"></div>
+                <p>Chargement...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Simple Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
